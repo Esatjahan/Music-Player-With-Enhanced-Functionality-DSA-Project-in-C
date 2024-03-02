@@ -1,8 +1,8 @@
+#Music Player Project By Mst.Esat jahan Akhi
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// Data structure definitions
 struct Song {
     char title[100];
     char artist[100];
@@ -20,8 +20,6 @@ struct Playlist {
 struct Stack {
     struct Node* top;
 };
-
-// Function prototypes
 void initPlaylist(struct Playlist* playlist);
 void initStack(struct Stack* stack);
 void addSong(struct Playlist* playlist, struct Song newSong);
@@ -128,7 +126,6 @@ int main() {
     return 0;
 }
 
-// Function definitions
 void initPlaylist(struct Playlist* playlist) {
     playlist->head = NULL;
 }
@@ -191,11 +188,9 @@ void playSong(struct Playlist* playlist, struct Stack* history) {
         playedSong->next = history->top;
         history->top = playedSong;
 
-        // Remove the played song from the playlist
         removeFromPlaylist(playlist, songChoice);
     } else {
         printf("Invalid song choice.\n");
-        // Clear input buffer
         while (getchar() != '\n');
     }
 }
@@ -209,19 +204,18 @@ void displayHistory(struct Stack* history) {
 }
 
 void sortPlaylist(struct Playlist* playlist) {
-    // Implement sorting algorithm (e.g., bubble sort)
 }
 
 void searchPlaylist(struct Playlist* playlist, const char* searchTitle) {
-    // Implement searching algorithm (e.g., linear search)
+
 }
 
 void addToPlaylistFromFile(struct Playlist* playlist, const char* filename) {
-    // Read songs from file and add to the playlist
+    
 }
 
 void savePlaylistToFile(struct Playlist* playlist, const char* filename) {
-    // Save playlist to file
+    
 }
 
 int getTotalSongs(struct Playlist* playlist) {
@@ -274,12 +268,11 @@ void clearPlaylist(struct Playlist* playlist) {
 
 void undoPlayedSong(struct Playlist* playlist, struct Stack* history) {
     if (history->top != NULL) {
-        // Add the top node of the history stack to the playlist
+        
         struct Node* playedSong = history->top;
         playedSong->next = playlist->head;
         playlist->head = playedSong;
 
-        // Remove the top node from the history stack
         struct Node* temp = history->top;
         history->top = temp->next;
         free(temp);
